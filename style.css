@@ -1,0 +1,46 @@
+body {
+    font-falmily: monospace, "Hannotate SC", "ヒラギノ丸ゴ Pro W4", monospace;
+    color: #630;
+    line-height: 25px;
+    font-size: 0.95em;
+}
+
+#debug {
+    background-color: #00ffff;
+}
+/*
+code {
+    display: inline-block;
+    padding: 0.1em 0.25em;
+
+    color: #444;
+    background-color: #e7edf3;
+    border-radius: 3px;
+    border: solid 1px #d6dde4;
+}
+*/
+
+/*.entry-content pre { */
+/* pre { */
+.code {
+    /*　preタグ全体を相対位置に指定（必須）　*/
+    position: relative;
+
+    /*　preタグの背景色　*/
+    background: #364549;
+
+    /*　preタグ内のテキストカラー　*/
+    color: #e3e3e3;
+
+    /*　preタグの外側の余白　*/
+    margin: 0 0 1.5em;
+
+    /*　preタグの内側の余白　*/
+    padding: 1em;
+
+    /*　preタグ内のフォントを少し小さく（オススメ）　*/
+    font-size: 95%;
+
+    /*　preタグ周りの枠線なくすSANGO限定（他テーマは不要）　*/
+    border: none;
+}
