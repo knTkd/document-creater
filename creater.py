@@ -1,14 +1,18 @@
+import os
+import shutil
+from tkinter import filedialog
+
 
 class Appender:
 
-    def __init__(self, input_filename='input.txt', origin_filename='origin.html', created_filename='created.html'):
+    def __init__(self, input_filepath='input.txt', origin_filepath='origin.html', created_filepath='created.html'):
         # 埋め込むときの元となるインデント
         self.indent = 1
 
         # 各ファイルの名前をセット
-        self.input_file = input_filename
-        self.origin_file = origin_filename
-        self.created_file = created_filename
+        self.input_file = input_filepath
+        self.origin_file = origin_filepath
+        self.created_file = created_filepath
         
         # originファイルをリストとして読み込み
         self.origin_lines = self.readlines(self.origin_file)
@@ -35,7 +39,8 @@ class Appender:
                 self.local_bottom[i] = True
         self.local_bottom[0] = self.indent_levels[0] >= self.indent_levels[1]
         self.local_bottom[-1] = self.indent_levels[-1] >= self.indent_levels[-2]
-        
+
+        self.raw_lines = list()
 
     def go(self):
         # convert input_lines to on html
@@ -58,7 +63,7 @@ class Appender:
         r = ''
         for index in index_list[1:indent_level+1]:
             r += str(index) + '-'
-        return r[:-1] + '.'
+        return r[:-1] + '. '
 
     def next_index_list(self, pre_il, il, index_list):
         # インデックスを１つ進める
@@ -85,12 +90,17 @@ class Appender:
             raw_line = self.input2raw(input_line)
             if raw_line.find('code ') == 0:
                 html_line = self.raw2code(raw_line[5:])
+                raw_line = ''
             elif local_bottom:
                 html_line = raw_line
+                raw_line = ''
             else:
                 raw_line = self.index_list2str(indent_level, index_list) + raw_line
                 html_line = self.raw2html(raw_line, indent_level)
             r.append(html_line)
+
+            # 目次用にraw_lineを取っておく (コードとボトムは空文字として)
+            self.raw_lines.append(raw_line)
 
             pre_indent_level = indent_level
         return r
@@ -151,21 +161,41 @@ class Appender:
         print(f'error: origin.htmlファイル内に</body>が見当たりません')
         exit(1)
 
-    def readlines(self, filename):
-        # filenameをもらって、中身を行ごとのリストで返す
+    def readlines(self, filepath):
+        # filepathをもらって、中身を行ごとのリストで返す
         r = None
         try:
-            with open(filename) as f:
+            with open(filepath) as f:
                 r = f.readlines()
         except:
-            print(f'{filename} が見つかりません\n')
+            print(f'{filepath} が見つかりません\n')
             raise
         return r
     
 
 def main():
-    appender = Appender()
+    input('変換する元となる、ソースファイルを選択してください （準備が良ければエンターボタン）')
+
+    kwargs = dict()
+
+    # typ = [('てきすとふぁいる', '*.txt')]
+    typ = [('', '*')]
+    kwargs['input_filepath'] = filedialog.askopenfilename(filetypes=typ, initialdir='.')
+    
+    basedir = os.path.dirname(os.path.abspath(__file__))
+
+    kwargs['origin_filepath'] = os.path.join(basedir, 'origin.html')
+    kwargs['created_filepath'] = os.path.join(basedir, 'created', 'document.html')
+
+    if not os.path.exists(os.path.dirname(kwargs['created_filepath'])):
+        os.mkdir(os.path.dirname(kwargs['created_filepath']))
+    
+    
+    appender = Appender(**kwargs)
     appender.go()
+
+    shutil.copy(os.path.join(basedir, 'style.css'), os.path.join(basedir, 'created', 'style.css'))
+    print(f"\nhtmlへ変換しました. ({kwargs['created_filepath']})\nファイルアイコンをダブルクリックするとブラウザで開くことができます")
 
 if __name__ == '__main__':
     main()
