@@ -17,7 +17,7 @@
 　準備
 　　準備〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜
 
-```(
+```
 
 ### createdファイル
 次のようにhtmlが生成される
@@ -27,18 +27,18 @@
   もくてき〜〜〜〜〜〜〜〜〜〜〜〜
   <h2>2. 準備</h2>
   準備〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜〜
-```(
+```
 
 ### コードの埋め込み
 また、以下のようにコードを埋め込むことも可能である。
 コードを埋め込む際には先頭に `code ` をつける必要が有る
 ```python:input.txt
 code name = input()\nprint(f'Hello, {name}')
-```(
+```
 次のように、htmlの要素が出力される
 ```html:created.html
  <pre class="code">name = input()<br>print(f'Hello, {name}')</pre>
-```(
+```
 
 ### input.txtを元にして作成されたHTMLの例 [リンク](https://github.com/knTkd/document-creater/created/document.html)
 
