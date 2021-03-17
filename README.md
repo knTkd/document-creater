@@ -40,7 +40,7 @@ code name = input()\nprint(f'Hello, {name}')
  <pre class="code">name = input()<br>print(f'Hello, {name}')</pre>
 ```
 
-### input.txtを元にして作成されたHTMLの例 [リンク](https://github.com/knTkd/document-creater/created/document.html)
+### input.txtを元にして作成されたHTMLの例 [リンク](https://github.com/knTkd/document-creater/blob/main/created/document.html)
 
 ### ローカルでのパス
 education-material/createdByPy/
