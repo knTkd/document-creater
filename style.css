@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-falmily: monospace, "Hannotate SC", "ヒラギノ丸ゴ Pro W4", monospace;
     color: #630;
@@ -8,26 +12,8 @@ body {
 #debug {
     background-color: #00ffff;
 }
-/*
-.entry-content pre {
-    position: relative;
-}
 
-.box-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-family: sans-serif;
-    font-size: 13px;
-    display: inline-block;
-    padding: 2px 5px;
-    color: #fff;
-    background: #000;
-}
-*/
 .code {
-
-
     /*　preタグ全体を相対位置に指定（必須）　*/
     position: relative;
 
@@ -48,4 +34,27 @@ body {
 
     /*　preタグ周りの枠線なくすSANGO限定（他テーマは不要）　*/
     border: none;
+}
+
+#page_top{
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  right: 50px;
+  bottom: 10px;
+  opacity: 0.6;
+}
+#page_top a{
+  width: 60px;
+  height: 60px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: 'Top'; /*'\f139';*/
+  font-size: 50px;
+  color: #f9f3f3;
+  background: #00917c;
+  
 }
