@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>教育資料</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./style.css">
+    <script src="script.js"></script>
+
+
+    <div class="header-logo-menu">
+      <div id="nav-drawer">
+	<input id="nav-input" type="checkbox" class="nav-unshown">
+	<label id="nav-open" for="nav-input"><span></span></label>
+	<label class="nav-unshown" id="nav-close" for="nav-input"></label>
+	<div id="nav-content">
+	  <!-- 目次 -->
+  <ul>
+  <ul>
+  <li>
+  <a href=#1>用語</a>
+  <ul>
+  <li>
+  <a href=#1-1>はじめに</a>
+  </li>
+  </ul>
+  <li>
+  <a href=#1-2>ファイル関係</a>
+  <ul>
+  <li>
+  <a href=#1-2-1>パス</a>
+  <ul>
+  <li>
+  <a href=#1-2-1-1>絶対パス</a>
+  </li>
+  </ul>
+  <li>
+  <a href=#1-2-1-2>相対パス</a>
+  </li>
+  </li>
+  </ul>
+  </li>
+  </li>
+  <li>
+  <a href=#2>Python 基礎</a>
+  <ul>
+  <li>
+  <a href=#2-1>if文</a>
+  <ul>
+  <li>
+  <a href=#2-1-1>単純な条件分岐</a>
+  <ul>
+  <li>
+  <a href=#2-1-1-1>数値の例</a>
+  </li>
+  </ul>
+  </li>
+  </ul>
+  <li>
+  <a href=#2-2>コレクション</a>
+  <ul>
+  <li>
+  <a href=#2-2-1>リスト</a>
+  <ul>
+  <li>
+  <a href=#2-2-1-1>基本的なリスト内包表記</a>
+  </li>
+  </ul>
+  <li>
+  <a href=#2-2-1-2>リスト内包表記を使ったフィルター的な</a>
+  </li>
+  </li>
+  </ul>
+  <li>
+  <a href=#2-2-2>タプル</a>
+  <ul>
+  <li>
+  <a href=#2-2-2-1>基本的な使い方</a>
+  </li>
+  </ul>
+  <li>
+  <a href=#2-2-2-2>これって実は...</a>
+  </li>
+  </li>
+  </li>
+  </li>
+  </ul>
+  </li>
+  </ul>
+  </ul>
+
+	</div>
+      </div>
+      <div class="logo-area">???????</div>
+    </div>
+
+
+  </head>
+  <body>
+
+    <!-- 生成したコード -->
+  <h1 id=1><hr>用語<hr></h1>
+  <h2 id=1-1>1. はじめに</h2>
+  これらの用語はである
+  <h2 id=1-2>2. ファイル関係</h2>
+  <h3 id=1-2-1>2-1. パス</h3>
+  <h4 id=1-2-1-1>2-1-1. 絶対パス</h4>
+  絶対パスとは、一番上から見たときの住所のようなものである
+  <h4 id=1-2-1-2>2-1-2. 相対パス</h4>
+  相対パスとは、今いるディレクトリ（カレントディレクトリ）から見たときのパスのようなものである。
+  <h1 id=2><hr>Python 基礎<hr></h1>
+  <h2 id=2-1>1. if文</h2>
+  <h3 id=2-1-1>1-1. 単純な条件分岐</h3>
+  <h4 id=2-1-1-1>1-1-1. 数値の例</h4>
+  if文は、条件によって処理を帰ることができる
+  <pre class="code">x = 7<br>if x == 7:<br>    print('x は7です')<br>else:<br>    print('xは7ではない')</pre>
+  <h2 id=2-2>2. コレクション</h2>
+  <h3 id=2-2-1>2-1. リスト</h3>
+  <h4 id=2-2-1-1>2-1-1. 基本的なリスト内包表記</h4>
+  りスト内包表には、元のリストを利用して新しく作る場合や、フィルターに掛けて必要な要素だけを取り出す時に便利である
+  <pre class="code">A = [3, 2, 6]<br>B = [a * 2 for a in A]<br>C = [a - 3 for a in A]<br>print('A = ', A)<br>print('B = ', B)<br>print('C = ', C)</pre>
+  <pre class="code"># 出力<br>A =  [3, 2, 6]<br>B =  [6, 4, 12]<br>C =  [0, -1, 3]</pre>
+  <h4 id=2-2-1-2>2-1-2. リスト内包表記を使ったフィルター的な</h4>
+  リスト内包表記で、ある条件を設定して、その条件に当てはまるものだけを要素とする、ということができる
+  <pre class="code">A = [3, 8, 5, 2, -8, 4]<br>B = [a for a in A if a >= 3]<br>print('B = ', B)</pre>
+  <pre class="code"># 出力<br>B = [3, 8, 5, 4]</pre>
+  <h3 id=2-2-2>2-2. タプル</h3>
+  <h4 id=2-2-2-1>2-2-1. 基本的な使い方</h4>
+  タプルは複数の要素を持ちたい時にまとめて持つのが便利
+  リストとの違いは、リストは要素を変更したり追加したりできるが、タプルは変更不可な点などである
+  <h4 id=2-2-2-2>2-2-2. これって実は...</h4>
+  値のスワップ時や複数代入時に、
+  <pre class="code">a, b = 3, 9<br>print(f'a = {a}  b = {b}')<br>a, b = b, a<br>print(f'a = {a}  b = {b}')</pre>
+  <pre class="code"># 出力<br>a = 3  b = 9<br>a = 9  b = 3</pre>
+  といったコードを書くことは無いだろうか。これはタプルのパック・アンパックという機能を使っているものである
+    
+    <div id="page_top"><a href="#"></a></div>
+  </body>
+</html>
